@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/d/Code/Project-C/LeetCode/func.h
+
+/cygdrive/d/Code/Project-C/LeetCode/main.c
+stdio.h
+-
+math.h
+-
+func.h
+/cygdrive/d/Code/Project-C/LeetCode/func.h
+
+/cygdrive/d/Code/Project-C/LeetCode/reverse.c
+stdio.h
+-
+limits.h
+-
+
+/cygdrive/d/Code/Project-C/LeetCode/twoSum.c
+stdlib.h
+-
+
