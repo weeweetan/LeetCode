@@ -1,1 +1,0 @@
-/usr/bin/cc -g  -Wl,--enable-auto-import CMakeFiles/LeetCode.dir/main.c.o CMakeFiles/LeetCode.dir/twoSum.c.o CMakeFiles/LeetCode.dir/reverse.c.o  -o LeetCode.exe -Wl,--out-implib,libLeetCode.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

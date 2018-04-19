@@ -1,3 +1,0 @@
-/cygdrive/d/Code/Project-C/LeetCode/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/d/Code/Project-C/LeetCode/cmake-build-debug/CMakeFiles/edit_cache.dir
-/cygdrive/d/Code/Project-C/LeetCode/cmake-build-debug/CMakeFiles/LeetCode.dir
