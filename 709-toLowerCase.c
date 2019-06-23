@@ -7,7 +7,6 @@
 //
 char * toLowerCase(char * str) {
     size_t str_len = strlen(str);
-//    char *o_str = malloc(str_len);
     for (; *str != '\0'; str++)
     {
         if (*str >= 65 && *str <= 90)
