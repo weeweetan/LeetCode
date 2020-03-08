@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
 
 typedef struct node
 {
@@ -13,7 +14,7 @@ typedef struct node
 }Node;
 
 
-
+#define max(a, b) (a > b ? a : b)
 
 int binary_tree_sum(Node *root, int value, int *result, int index)
 {
@@ -82,6 +83,54 @@ void after_order_traversal(Node *root)
     }
 }
 
+
+int binary_tree_depth(Node *root)
+{
+    int left = 0, right = 0;
+    if (root == NULL)
+    {
+        return 0;
+    }
+
+    left = binary_tree_depth(root->left);
+    if (left == -1)
+    {
+        return -1;
+    }
+
+    right = binary_tree_depth(root->right);
+    if (right == -1)
+    {
+        return -1;
+    }
+
+    return abs(left - right) < 2 ? max(left, right) + 1 : -1;
+
+}
+
+
+bool binary_is_balance(Node *root)
+{
+    return binary_tree_depth(root) != -1;
+}
+
+
+Node *merge_tree(Node *root1, Node *root2)
+{
+    if (root1 == NULL)
+        return root2;
+    if (root2 == NULL)
+        return root2;
+
+    root1->val += root2->val;
+
+    root1->left = merge_tree(root1->left, root2->left);
+    root1->right = merge_tree(root1->right, root2->right);
+
+    return root1;
+}
+
+
 int main(int argc, char **argv) {
     Node *root = malloc(sizeof(Node));
     Node *left = malloc(sizeof(Node));
@@ -111,6 +160,7 @@ int main(int argc, char **argv) {
     right->right = right2;
     left2->right = right3;
     printf("%d\n", match_subtree_sum(root, 24));
+    printf("%d\n", binary_is_balance(root));
 //    pre_order_traversal(root);
 //    printf("\n");
 //    mid_order_traversal(root);
