@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 //
 // Created by 11135 on 2020/2/22.
 //
@@ -27,7 +29,13 @@ int countNegatives(int** grid, int gridSize, int* gridColSize)
 int main(int argc, char **argv)
 {
 
-    int grid[4][4] = {{4,3,2,-1},{3,2,1,-1},{1,1,-1,-2},{-1,-1,-2,-3}};
+    int temp[4][4] = {{4,3,2,-1},{3,2,1,-1},{1,1,-1,-2},{-1,-1,-2,-3}};
     int gridColSize = 4;
-    countNegatives(grid, 4, &gridColSize);
+    int *grid[4];
+    grid[0] = temp[0];
+    grid[1] = temp[1];
+    grid[2] = temp[2];
+    grid[3] = temp[3];
+
+    printf("%d\n", countNegatives(grid, 4, &gridColSize));
 }
