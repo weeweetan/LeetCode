@@ -11,7 +11,7 @@ struct TreeNode {
     struct TreeNode *right;
 };
 
-
+//左右子树都相等返回true
 bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
 
     if (q == NULL && p == NULL)
