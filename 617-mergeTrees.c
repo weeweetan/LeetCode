@@ -10,7 +10,7 @@ struct TreeNode {
     struct TreeNode *left;
     struct TreeNode *right;
 };
-
+//递归法，合并到任意一棵树
 struct TreeNode* mergeTrees(struct TreeNode* t1, struct TreeNode* t2)
 {
     if (t1 == NULL)
