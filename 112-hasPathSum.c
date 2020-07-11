@@ -15,7 +15,7 @@ struct TreeNode {
 bool hasPathSum(struct TreeNode* root, int sum) {
 
     if (root == NULL) return false;
-    //从根递减节点的值
+    //从根递减节点的值，如果sum递减到0又是叶子节点则满足条件
     sum -= root->val;
 
     if (root->left == NULL && root->right == NULL && sum == 0) return true;
