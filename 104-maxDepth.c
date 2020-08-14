@@ -10,7 +10,7 @@ struct TreeNode {
     struct TreeNode *left;
     struct TreeNode *right;
 };
-//返回左右子树最大深度
+//返回左右子树最大深度,使用递归完成
 int maxDepth(struct TreeNode* root) {
 
     int left, right;

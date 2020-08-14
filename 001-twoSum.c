@@ -2,7 +2,7 @@
 // Created by 11135 on 2018/4/14.
 //
 #include <stdlib.h>
-
+//直接用指针访问相邻两个数据比较
 int* twoSum(int* nums, int numsSize, int target) {
     int i, j;
     int *reval = (int *)malloc(sizeof(int)*2);
