@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
+#include <limits.h>
 
 typedef struct node
 {
@@ -120,7 +121,7 @@ Node *merge_tree(Node *root1, Node *root2)
     if (root1 == NULL)
         return root2;
     if (root2 == NULL)
-        return root2;
+        return root1;
 
     root1->val += root2->val;
 
@@ -128,6 +129,16 @@ Node *merge_tree(Node *root1, Node *root2)
     root1->right = merge_tree(root1->right, root2->right);
 
     return root1;
+}
+
+int ans = INT_MIN;
+int max_side(Node *root)
+{
+    if (root == NULL) return 0;
+    int left = max(0, max_side(root->left));
+    int right = max(0, max_side(root->right));
+    ans = max(ans, left + right + root->val);
+    return max(left, right) + root->val;
 }
 
 
@@ -161,6 +172,7 @@ int main(int argc, char **argv) {
     left2->right = right3;
     printf("%d\n", match_subtree_sum(root, 24));
     printf("%d\n", binary_is_balance(root));
+    printf("%d\n", max_side(root));
 //    pre_order_traversal(root);
 //    printf("\n");
 //    mid_order_traversal(root);
