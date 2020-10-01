@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
+//使用vector的insert
 class Solution {
 public:
     vector<int> createTargetArray(vector<int>& nums, vector<int>& index) {
