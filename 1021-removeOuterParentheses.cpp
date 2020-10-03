@@ -12,7 +12,7 @@ public:
     string removeOuterParentheses(string S) {
         int left = 1, right = 0;
         string res;
-
+        //从第二个开始
         for (int i = 1; i < S.size(); ++i) {
             if (S[i] == '(') left++;
             else right++;
