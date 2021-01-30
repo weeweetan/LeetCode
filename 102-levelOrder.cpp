@@ -20,7 +20,7 @@ public:
         vector<vector<int>> ret;
         if (!root)
             return ret;
-        
+        //根结点入队列
         queue <TreeNode *> q;
         q.push(root);
         while(!q.empty())
