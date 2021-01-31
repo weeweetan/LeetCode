@@ -30,6 +30,7 @@ public:
             for (int i = 1; i <= currentLevelSize; ++i) {
                 auto node = q.front(); q.pop();
                 ret.back().push_back(node->val);
+                //左右结点入队列
                 if (node->left) q.push(node->left);
                 if (node->right) q.push(node->right);
             }
