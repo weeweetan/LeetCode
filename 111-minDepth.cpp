@@ -23,7 +23,7 @@ public:
         queue<TreeNode *> q;
         q.push(root);
         int depth = 1;
-
+        //遍历队列
         while (!q.empty())
         {
             int sz = q.size();
