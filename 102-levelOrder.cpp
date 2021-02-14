@@ -27,6 +27,7 @@ public:
         {
             int currentLevelSize = q.size();
             ret.push_back(vector<int>());
+            //遍历当前层
             for (int i = 1; i <= currentLevelSize; ++i) {
                 auto node = q.front(); q.pop();
                 ret.back().push_back(node->val);
