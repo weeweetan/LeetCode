@@ -16,11 +16,11 @@ int maxDepth(struct TreeNode* root) {
     int left, right;
     if (root == NULL)
         return 0;
-
+    
     left = maxDepth(root->left);
 
     right = maxDepth(root->right);
-
+    //返回比较大的子树深度
     return left > right ? left + 1 : right + 1;
 }
 
