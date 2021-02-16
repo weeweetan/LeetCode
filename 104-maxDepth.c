@@ -20,7 +20,7 @@ int maxDepth(struct TreeNode* root) {
     left = maxDepth(root->left);
 
     right = maxDepth(root->right);
-    //返回比较大的子树深度
+    //返回比较大的子树深度+1
     return left > right ? left + 1 : right + 1;
 }
 
