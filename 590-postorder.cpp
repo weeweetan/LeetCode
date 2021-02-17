@@ -62,7 +62,7 @@ public:
             {
                 continue;
             }
-
+            //遍历子树
             if (!node->children.empty())
             {
                 int size = node->children.size();
