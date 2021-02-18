@@ -24,6 +24,7 @@ public:
 
 class Solution {
 public:
+    //深度优先，递归实现
     void dfs(Node *root, vector<int>& res)
     {
         if (!root) return;
