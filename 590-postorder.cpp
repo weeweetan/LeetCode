@@ -47,7 +47,7 @@ public:
         vector<int> ret;
         if (!root)
             return ret;
-
+        //根结点入栈
         stack <Node *> stack1;
         stack1.push(root);
         while (!stack1.empty())
