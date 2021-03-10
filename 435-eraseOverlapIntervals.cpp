@@ -9,7 +9,7 @@ using namespace std;
 class Solution {
 public:
 
-    bool compare(vector<int> a, vector<int> b)
+    static bool compare(vector<int> a, vector<int> b)
     {
         return (a[1] < b[1]);
     }
@@ -20,7 +20,7 @@ public:
         sort(intervals.begin(), intervals.end(), compare);
         int count = 1;
         int x_end = intervals[0][1];
-        for (auto interval; intervals) {
+        for (auto interval : intervals) {
             int start = interval[0];
             if (start >= x_end)
             {
