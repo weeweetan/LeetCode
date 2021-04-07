@@ -21,6 +21,7 @@ public:
             return ret;
 
         queue <TreeNode *> q;
+        // 根结点入队列
         q.push(root);
         while(!q.empty())
         {
