@@ -27,6 +27,7 @@ public:
         {
             int currentLevelSize = q.size();
             vector<int> v;
+            // 遍历左右节点
             for (int i = 1; i <= currentLevelSize; ++i) {
                 auto node = q.front(); q.pop();
                 v.push_back(node->val);
