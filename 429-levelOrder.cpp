@@ -31,7 +31,7 @@ public:
 
         if (root == nullptr)
             return ret;
-
+        // 头结点入队列
         q.push(root);
         while (!q.empty())
         {
