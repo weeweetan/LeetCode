@@ -21,7 +21,7 @@ struct TreeNode {
 
 class Solution {
 public:
-
+    //深度优先
     void dfs(TreeNode *root, vector<int>& res)
     {
         if (!root) return;
