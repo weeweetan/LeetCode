@@ -34,6 +34,8 @@ public:
         }
         return true;
     }
+    
+    // 回溯函数
     void backtrack(vector<string>& board, int row)
     {
         //触发结束条件
