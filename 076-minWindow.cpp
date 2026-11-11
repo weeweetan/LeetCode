@@ -1,10 +1,9 @@
 //
 // Created by 11135 on 2021/2/23.
 //
-#include <iostream>
 #include <string>
 #include <unordered_map>
-#include <climits>
+#include <cstddef>
 
 using namespace std;
 
@@ -12,13 +11,15 @@ using namespace std;
 class Solution {
 public:
     string minWindow(string s, string t) {
-        unordered_map<char, int> need, window;
+        if (t.empty() || t.size() > s.size()) return "";
+
+        unordered_map<char, size_t> need, window;
         for (char c : t) need[c]++;
 
-        int left = 0, right = 0;
-        int valid = 0;
+        size_t left = 0, right = 0;
+        size_t valid = 0;
 
-        int start = 0, len = INT_MAX;
+        size_t start = 0, len = string::npos;
         while (right < s.size())
         {
             char c = s[right];
@@ -48,6 +49,6 @@ public:
                 }
             }
         }
-        return len == INT_MIN ? "" : s.substr(start, len);
+        return len == string::npos ? "" : s.substr(start, len);
     }
 };

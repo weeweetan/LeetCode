@@ -1,6 +1,40 @@
-cmake_minimum_required(VERSION 3.9)
-project(LeetCode C)
+cmake_minimum_required(VERSION 3.20)
+project(LeetCode LANGUAGES C CXX)
 
 set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+option(ENABLE_SANITIZERS "Enable address and undefined behavior sanitizers" OFF)
 
-add_executable(LeetCode main.c 001-twoSum.c func.h 007-reverse.c 009-isPalindrome.c 002-twoAdd.c)
+add_library(project_options INTERFACE)
+if(ENABLE_SANITIZERS AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(project_options INTERFACE -fsanitize=address,undefined -fno-omit-frame-pointer)
+    target_link_options(project_options INTERFACE -fsanitize=address,undefined)
+endif()
+
+# Preserve the original driver; its removeDuplicates dependency has its own demo.
+add_executable(LeetCode main.c 001-twoSum.c 007-reverse.c 009-isPalindrome.c
+    002-twoAdd.c 026-removeDuplicates.c)
+target_compile_definitions(LeetCode PRIVATE LEETCODE_NO_DEMO)
+target_link_libraries(LeetCode PRIVATE project_options)
+
+include(CTest)
+if(BUILD_TESTING)
+    add_executable(test_min_window tests/test_min_window.cpp)
+    target_include_directories(test_min_window PRIVATE "${PROJECT_SOURCE_DIR}")
+    target_link_libraries(test_min_window PRIVATE project_options)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+        target_compile_options(test_min_window PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    endif()
+    foreach(case examples edges multiplicity bytes exhaustive long)
+        add_test(NAME min-window-${case} COMMAND test_min_window ${case})
+    endforeach()
+    add_test(NAME legacy-driver COMMAND LeetCode)
+    set_tests_properties(legacy-driver PROPERTIES PASS_REGULAR_EXPRESSION "ret:76")
+    get_property(all_tests DIRECTORY PROPERTY TESTS)
+    set_tests_properties(${all_tests} PROPERTIES TIMEOUT 30
+        FAIL_REGULAR_EXPRESSION "AddressSanitizer;UndefinedBehaviorSanitizer;runtime error:;LeakSanitizer")
+endif()
