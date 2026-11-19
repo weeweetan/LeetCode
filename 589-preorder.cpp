@@ -41,6 +41,7 @@ public:
         if (root == nullptr)
             return res;
         dfs(root, res);
+        return res;
     }
 
     vector<int> preorderTraversal1(Node *root) {
